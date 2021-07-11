@@ -2,6 +2,10 @@ const express = require("express");
 const fs = require('fs');
 const ytdl = require('ytdl-core');
 const app = express();
+var cors = require('cors')
+
+
+app.use(cors())
 
 // first video example
 // app.get("/",(req,res)=>{
@@ -39,6 +43,7 @@ const convertUrl = (url) => {
 
 // videos
 app.get("/video", async(req,res)=>{
+	console.log(req.query.videoId)
 	const videoId = convertUrl(req.query.videoId,res)
 	let info = await ytdl.getInfo(videoId)
 	res.json(info)
@@ -66,7 +71,7 @@ app.get("/download", async(req,res)=>{
 		res.header('Content-Type', 'audio/mp3');
 	}
 
-	ytdl(videoId, { filter: format => format.itag === 18 }).pipe(res); 
+	ytdl(videoId, { filter: format => format.itag === parseInt(itag) }).pipe(res); 
 	
 })
 
