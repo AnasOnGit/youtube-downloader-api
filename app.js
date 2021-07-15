@@ -1,9 +1,13 @@
 const express = require("express");
-const fs = require('fs');
+// const fs = require('fs');
 const ytdl = require('ytdl-core');
 const app = express();
 var cors = require('cors')
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 4000;
+}
 
 app.use(cors())
 
@@ -76,4 +80,4 @@ app.get("/download", async(req,res)=>{
 })
 
 
-app.listen(4000,console.log("working..."))
+app.listen(port,console.log("working..."))
