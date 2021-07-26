@@ -13,7 +13,7 @@ app.use(cors())
 
 // first video example
 // app.get("/",(req,res)=>{
-// 	ytdl('https://www.youtube.com/watch?v=lLiw3egVAZU&t=2s')
+// 	ytdl('https://youtube.com/watch?v=lLiw3egVAZU&t=2s')
 //   	.pipe(fs.createWriteStream('video.mp4'))
 // 	res.send("Hello")
 // })
@@ -27,22 +27,22 @@ const convertUrl = (url) => {
 	if(url.includes("youtu.be")){
 
 	 newUrlArray = url.split("https://youtu.be/")
-	return `https://www.youtube.com/watch?v=${newUrlArray[1]}`
+	return `https://youtube.com/watch?v=${newUrlArray[1]}`
 
 	}else
-	 if(url.includes("https://www.youtube.com/shorts/")){
+	 if(url.includes("https://youtube.com/shorts/")){
 
-		 newUrlArray = url.split("https://www.youtube.com/shorts/")
-		return `https://www.youtube.com/watch?v=${newUrlArray[1]}`
+		 newUrlArray = url.split("https://youtube.com/shorts/")
+		return `https://youtube.com/watch?v=${newUrlArray[1]}`
 	}
-	else if(url.includes("https://www.youtube.com/watch?v")){
+	else if(url.includes("https://youtube.com/watch?v")){
 		return url
 	}
 	else{
-		return "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+		return "https://youtube.com/watch?v=dQw4w9WgXcQ"
 	}
 	// youtube shorts url
-	// https://www.youtube.com/shorts/lZub2xQNYxo
+	// https://youtube.com/shorts/lZub2xQNYxo
 }
 
 // videos
